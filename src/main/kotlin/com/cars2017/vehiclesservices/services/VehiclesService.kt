@@ -1,20 +1,13 @@
 package com.cars2017.vehiclesservices.services
 
 import com.cars2017.vehiclesservices.repository.DealerVehiclesDao
-import com.cars2017.vehiclesservices.services.bean.CsvVehicleRecord
-import com.cars2017.vehiclesservices.services.bean.DealerVehicle
-import com.cars2017.vehiclesservices.services.bean.JsonVehicleRecord
 import com.cars2017.vehiclesservices.services.bean.SearchRequest
-import com.opencsv.bean.CsvToBeanBuilder
-import com.opencsv.exceptions.CsvException
+import com.cars2017.vehiclesservices.services.bean.VehicleListingRecord
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.io.Reader
 
 @Service
 class VehiclesService {
@@ -36,14 +29,14 @@ class VehiclesService {
         vehiclesDao.saveOrUpdate(records)
     }
 
-    fun saveVehiclesFromJson(dealerId: String, vehicles: List<JsonVehicleRecord>) {
+    fun saveVehiclesFromJson(dealerId: String, vehicleListings: List<VehicleListingRecord>) {
 
-        val records = vehicles.map { vehiclesDataMapper.asDealerVehicle(dealerId, it) }
+        val records = vehicleListings.map { vehiclesDataMapper.asDealerVehicle(dealerId, it) }
         log.info("Vehicle records to save: {}", records)
         vehiclesDao.saveOrUpdate(records)
     }
 
-    fun searchVehicles(search: SearchRequest): List<JsonVehicleRecord>{
+    fun searchVehicles(search: SearchRequest): List<VehicleListingRecord> {
 
         val result = vehiclesDao.findVehicles(search).map { vehiclesDataMapper.asJsonVehicleListing(it) }
         log.info("Search result. size= {}", result.size)

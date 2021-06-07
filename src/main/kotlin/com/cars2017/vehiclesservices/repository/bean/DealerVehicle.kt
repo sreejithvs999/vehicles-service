@@ -1,4 +1,4 @@
-package com.cars2017.vehiclesservices.services.bean
+package com.cars2017.vehiclesservices.repository.bean
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document

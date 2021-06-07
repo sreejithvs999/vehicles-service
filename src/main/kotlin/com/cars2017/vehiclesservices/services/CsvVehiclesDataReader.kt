@@ -2,7 +2,6 @@ package com.cars2017.vehiclesservices.services
 
 import com.cars2017.vehiclesservices.services.bean.CsvVehicleRecord
 import com.opencsv.bean.CsvToBeanBuilder
-import com.opencsv.exceptions.CsvException
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
@@ -30,7 +29,7 @@ class CsvVehiclesDataReader {
 
     private fun getReader(file: MultipartFile): Reader {
         try {
-            return  BufferedReader(InputStreamReader(file.inputStream))
+            return BufferedReader(InputStreamReader(file.inputStream))
         } catch (ioe: Exception) {
             throw VehiclesServiceError("Failed to read CSV File")
         }

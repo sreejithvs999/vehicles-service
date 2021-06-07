@@ -4,21 +4,21 @@ import com.opencsv.bean.CsvBindByName
 
 class CsvVehicleRecord {
 
-    @CsvBindByName(column="code")
+    @CsvBindByName(column = "code")
     var code: String? = null
 
-    @CsvBindByName(column="make/model")
+    @CsvBindByName(column = "make/model")
     var makeModel: String? = null
 
-    @CsvBindByName(column="power-in-ps")
+    @CsvBindByName(column = "power-in-ps")
     var powerPs: Int? = null
 
-    @CsvBindByName(column="year")
+    @CsvBindByName(column = "year")
     var year: Int? = null
 
-    @CsvBindByName(column="color")
+    @CsvBindByName(column = "color")
     var color: String? = null
 
-    @CsvBindByName(column="price")
+    @CsvBindByName(column = "price")
     var price: Int? = null
 }

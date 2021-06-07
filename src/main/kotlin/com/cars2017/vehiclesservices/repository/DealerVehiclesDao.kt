@@ -1,8 +1,7 @@
 package com.cars2017.vehiclesservices.repository
 
-import com.cars2017.vehiclesservices.services.bean.DealerVehicle
+import com.cars2017.vehiclesservices.repository.bean.DealerVehicle
 import com.cars2017.vehiclesservices.services.bean.SearchRequest
-import lombok.extern.slf4j.Slf4j
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.data.mongodb.core.query.Criteria
@@ -19,16 +18,13 @@ class DealerVehiclesDao {
 
     fun saveOrUpdate(records: List<DealerVehicle>) {
 
-
-
-
-        records.forEach{
-           val response = mongoTemplate.findAndReplace(
+        records.forEach {
+            val response = mongoTemplate.findAndReplace(
                     Query(where("dealerId").isEqualTo(it.dealerId)
                             .and("code").isEqualTo(it.code)),
-            it)
+                    it)
 
-            if(response == null) {
+            if (response == null) {
                 mongoTemplate.save(it)
             }
         }
@@ -45,6 +41,6 @@ class DealerVehiclesDao {
             year = search.year
         }
 
-       return mongoTemplate.find(Query(Criteria.byExample(example)), DealerVehicle::class.java)
+        return mongoTemplate.find(Query(Criteria.byExample(example)), DealerVehicle::class.java)
     }
 }

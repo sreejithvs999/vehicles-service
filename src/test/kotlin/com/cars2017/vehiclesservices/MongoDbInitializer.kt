@@ -1,6 +1,5 @@
 package com.cars2017.vehiclesservices
 
-import org.springframework.boot.test.util.TestPropertyValues
 import org.springframework.context.ApplicationContextInitializer
 import org.springframework.context.ConfigurableApplicationContext
 import org.testcontainers.containers.MongoDBContainer
@@ -16,12 +15,6 @@ class MongoDbInitializer : ApplicationContextInitializer<ConfigurableApplication
 
     override fun initialize(applicationContext: ConfigurableApplicationContext) {
 
-        val values: TestPropertyValues = TestPropertyValues.of(
-                "spring.data.mongodb.host=" + mongoDBContainer.getContainerIpAddress(),
-                "spring.data.mongodb.port=27017"
-        )
-
-        values.applyTo(applicationContext)
     }
 
 }

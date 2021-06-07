@@ -1,6 +1,6 @@
 package com.cars2017.vehiclesservices.services.bean
 
-class JsonVehicleRecord {
+class VehicleListingRecord {
 
     var code: String? = null
     var make: String? = null
